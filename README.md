@@ -1,21 +1,21 @@
 # MaYa
-An efficient an maintainable CSS Framework Architecture 
+An efficient an maintainable CSS Framework Architecture. 
 
-A minimalistic Sass framework that avoids common architectures such as OOCSS, SMACSS or BEM. 
-Because there is not "One size fits all" methodology for optimising CSS.
+MaYA has a minimalistic and opinionated CSS methodology based on real world experiences.
+MaYa doesn't believe there is a "One size fits all" methodology for optimising CSS.
 
 - A frame refers to an SPA representation of a page.
-- Base style inheritence 
+- Base style inheritance 
 
 
 
 ## Reset sheet
 
-A customized version of normailize.scss
+A customised version of normailize.scss
 
 ## Grid system
 
-A 24 column customized Pure CSS grid using Foundation media queries.
+A 24 column customised Pure CSS grid using Foundation media queries.
 
 ## Sub-class
 
@@ -27,7 +27,7 @@ There are two types of sub-class:
 **A common sub-class is used to avoid duplicating by providing common elements with common styles.**
 Common sub-classes reside in: `./common/*`
 
-A common sub-classe should be shorthand ( Max 4 characters ) and start with a hyphen.
+A common sub-class should be shorthand ( Max 4 characters ) and start with a hyphen.
 `.-bttn {//...`
 
 **A variant sub-class is used to extend or override with a new variant** of the class it proceeds.
@@ -42,7 +42,7 @@ Variant sub-classes reside below the class it extends or overrides.
 
 ## JavaScript 
 An element that needs to be accessed by JavaScript should have an ID attribute or the specific class prefix.
-It shoudl be prefixed with `js-`.
+It should be prefixed with `js-`.
 
 - `#js-user-interface`
 - `.js-user-interfaces  // Must be plural`
@@ -51,30 +51,30 @@ Style selectors and JavaScript selectors should be completely decoupled.
 JavaScript class selectors must be pluralised.
 
 ## State
-State is a class that starts with an understore, uppercase and spaced by underscores.
+State is a class that starts with an underscore, uppercase and spaced by underscores.
 - `._LIGHTS_ON`
 - `._LIGHTS_OFF`
 - .`_SHOW_VOUCHER`
 
 ## Members
 A member is a specific type of component that is either or all of:
-- Repeated thoughout the site
+- Repeated throughout the site
 - A small component
 - Text based
 - A button or typical point of interaction
-- An inidcation, Icon or small notification
+- An indication, Icon or small notification
 - A list of component sections
 
 A member is not typically:
 - A main section of the page or frame
 - A majority portion of a component.
 
-There is no specific definiton of what a member can and can not be, it is purely based on descretion.
+There is no specific definition of what a member can and can not be, it is purely based on discretion.
 It' usually a small part of an interface such as an input field link button or list icon.
 
-Members should differentated because they are sometimes:
-- Sometimes Heavily varianted
-- Used repetatively in a viewport
+Members should differentiated because they are sometimes:
+- Sometimes Heavily variant-ed
+- Used repetitively in a view-port
 - Difficult to extend on a large scale website
 
 Members have some different rules:
@@ -96,7 +96,7 @@ A member can have a **Main class** a **Variant sub-class** followed by any **STA
 
 Once again, when necessary we duplicate the smallest CSS code on the app for:
 
-- Rapid style development withough breaking other parts of the site
+- Rapid style development without breaking other parts of the site
 - Clean, readable and predictable CSS classes
 - Better maintainability
 
@@ -104,7 +104,7 @@ Once again, when necessary we duplicate the smallest CSS code on the app for:
 
 Maya has tackled the concept of not duplicating code (Similar to OOCSS) but also decouples code for members, which are the parts of the website that are usually prone to tight coupling.
 
-Maya does not solve decoupling for components and layout design, as the scenarios are too broad to decipher. For instance In some cases it is convenient to sub-class child componetns and even grandchild components, in other cases it's a terrible idea.
+Maya does not solve decoupling for components and layout design, as the scenarios are too broad to decipher. For instance In some cases it is convenient to sub-class child components and even grandchild components, in other cases it's a terrible idea.
 But here are some mandatory principals to enforce an agile codebaase for dedicated teams or your future self.
 
 #### 1. Directories: 
@@ -124,7 +124,7 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
   When a file is added/ removed within a folder you should only 
   need to update the index.scss of that folder it resides in.
  
-#### 2. Selectors are hyphonated with the exception of state.
+#### 2. Selectors are hyphenated with the exception of state.
   Hyphen separated names are arguably easier to read especially in markup
  
 #### 3. JavaScript Id's and classes must start with js- `js-something`
@@ -141,21 +141,53 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
   We know -dimensions contains repeat code essential to base-class. 
   This means there should be no use of base-class without -dimensions.
   
-#### 7. Variant sub-classe code resides below the base class
+#### 7. Variant sub-class code resides below the base class
 
 #### 8. Variant sub-classes do not use hyphens `base-class turquoise`
   We know turquoise is a variant and not an essential part of base-class.
 
-#### 9. State classes are captialized like this: `._SHOW_PANEL`
-  This differentiates satate from any other type of class.
+#### 9. State classes are capitalised like this: `._SHOW_PANEL`
+  This differentiates state from any other type of class.
 
 #### 10. Every directory must contain a README.md
   This doesn't replace comments but it is essential to provide a central
-  reference to explain how the codebase works because there maybe parts
+  reference to explain how the code base works because there maybe parts
   of the styling you may not need to touch for weeks, months if not years.
  
 #### 11. Everything design part is not a component, it is either a component or member.
-  If you do not differntiate comoponents from members you may not have a clear sense
+  If you do not differentiate components from members you may not have a clear sense
   of what to extend and what not to extend. This separation is crucial for 
-  rapid featuers and maintainability.
+  rapid features and maintainability.
+
+#### 12. Critical CSS
+  The first 14kb of above fold CSS should be injected/ included within a HTML page.
+  This is useful for accessibility as well as a graceful fallback for assets that may
+  fail in loading.
+
+#### 13. Preferably one CSS file
+  A web page only requires a single CSS file, this may be less feasible with HTTP2 but the 
+  aim of this rule is to avoid unnecessary request from too many external resources. This is a
+  vague rule because it should be ideally assessed with knowledge of content delivery systems 
+  and compared using benchmarks.
+
+#### 13. Asynchronous CSS
+  Load the CSS file without blocking other assets. 
+
+#### 13. Prefix styles
+  Automatically add vendor prefixes for required browsers. It is far better to do this using 
+  NPM modules than CSS mixins.
+  
+#### 14. Do not touch the root font-size
+  Leave it alone, it's commonly 16px but not for all devices so leave it alone.
+  
+#### 14. Use REM and EM units for fonts (Do not convert them)
+  When you set font-size to let's say `24px` it is not exactly `24px` in height in all browsers.
+  Because: 
+    - User agent differences
+    - Font sizing variates between font styles.
+  *It is not possible to correlate font-size in pixels to the actual pixel value on the screen*
+  Ems and rem units are to be used via trial and error **just like pixels**. 
+  Serious CSS development should generally use REM and or EM units for font size, padding and margins.
+
+    
 
