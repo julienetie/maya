@@ -1,36 +1,32 @@
 # MaYa
-An efficient an maintainable CSS Framework Architecture. 
+An efficient an maintainable CSS Framework and Architecture. 
 
-MaYA has a minimalistic and opinionated CSS methodology based on real world experiences.
-MaYa doesn't believe there is a "One size fits all" methodology for optimising CSS.
-
-- A frame refers to an SPA representation of a page.
-- Base style inheritance 
+MaYA uses a minimalistic and opinionated CSS methodology based on real world uses and expectations.
+MaYa doesn't look for a "One size fits all" solutions, because there is none.
 
 
-
-## Reset sheet
+### Reset sheet
 
 A customised version of normailize.scss
 
-## Grid system
+### Grid system
 
-A 24 column customised Pure CSS grid using Foundation media queries.
+A 24 column customised Pure.CSS grid based on Foundation media queries.
 
 ## Sub-class
 
 There are two types of sub-class:
 
-1. Common sub-class
-2. Variant sub-class
+1. **Common sub-class**
+2. **Variant sub-class**
 
-**A common sub-class is used to avoid duplicating by providing common elements with common styles.**
+A common sub-class is used to avoid duplicating by providing common elements with common styles.
 Common sub-classes reside in: `./common/*`
 
 A common sub-class should be shorthand ( Max 4 characters ) and start with a hyphen.
 `.-bttn {//...`
 
-**A variant sub-class is used to extend or override with a new variant** of the class it proceeds.
+A variant sub-class is used to extend or override with a new variant of the class it proceeds.
 Variant sub-classes reside below the class it extends or overrides. 
 
 ```css
@@ -107,7 +103,7 @@ Maya has tackled the concept of not duplicating code (Similar to OOCSS) but also
 Maya does not solve decoupling for components and layout design, as the scenarios are too broad to decipher. For instance In some cases it is convenient to sub-class child components and even grandchild components, in other cases it's a terrible idea.
 But here are some mandatory principals to enforce an agile codebaase for dedicated teams or your future self.
 
-#### 1. Directories: 
+### 1. Directories: 
 - `./common/*` Common sub-classes
 - `./members/*` Member components
 - `./components/*` Components
@@ -118,75 +114,75 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
 - `./index.scss` Directory imports and main CSS file
 - `./README.md` Directory imports and main CSS file
 
-#### 1. All directories must contain an index.scss file 
+### 2. All directories must contain an index.scss file 
   The index is the main import file of a directory and the 
   main file to import modules within the directory. Therefore 
   When a file is added/ removed within a folder you should only 
   need to update the index.scss of that folder it resides in.
  
-#### 2. Selectors are hyphenated with the exception of state.
+### 3. Selectors are hyphenated with the exception of state.
   Hyphen separated names are arguably easier to read especially in markup
  
-#### 3. JavaScript Id's and classes must start with js- `js-something`
+### 4. JavaScript Id's and classes must start with js- `js-something`
   How many times have you been curious if a class is being used by JavaScript?
   Now you are fully aware.
 
-#### 4. JavaScirpt Id's and classes can not be used within the CSS codebase
+### 5. JavaScirpt Id's and classes can not be used within the CSS codebase
   We want JavaScript to be decoupled from CSS to prevent breakage.
 
-#### 5. Common sub-classes reside in `./common/*` or `./common.scss`
+### 6. Common sub-classes reside in `./common/*` or `./common.scss`
   This is where repeat code snippets lives. It is safe to @extend within common.
 
-#### 6. Common sub-classes start with a hyphen `base-class -dimensions`
+### 7. Common sub-classes start with a hyphen `base-class -dimensions`
   We know -dimensions contains repeat code essential to base-class. 
   This means there should be no use of base-class without -dimensions.
   
-#### 7. Variant sub-class code resides below the base class
+### 8. Variant sub-class code resides below the base class
 
-#### 8. Variant sub-classes do not use hyphens `base-class turquoise`
+### 9. Variant sub-classes do not use hyphens `base-class turquoise`
   We know turquoise is a variant and not an essential part of base-class.
 
-#### 9. State classes are capitalised like this: `._SHOW_PANEL`
+### 10. State classes are capitalised like this: `._SHOW_PANEL`
   This differentiates state from any other type of class.
 
-#### 10. Every directory must contain a README.md
+### 11. Every directory must contain a README.md
   This doesn't replace comments but it is essential to provide a central
   reference to explain how the code base works because there maybe parts
   of the styling you may not need to touch for weeks, months if not years.
  
-#### 11. Everything design part is not a component, it is either a component or member.
+### 12. Everything design part is not a component, it is either a component or member.
   If you do not differentiate components from members you may not have a clear sense
   of what to extend and what not to extend. This separation is crucial for 
   rapid features and maintainability.
 
-#### 12. Critical CSS
+### 13. Critical CSS
   The first 14kb of above fold CSS should be injected/ included within a HTML page.
   This is useful for accessibility as well as a graceful fallback for assets that may
   fail in loading.
 
-#### 13. Preferably one CSS file
+### 14. Preferably one CSS file
   A web page only requires a single CSS file, this may be less feasible with HTTP2 but the 
   aim of this rule is to avoid unnecessary request from too many external resources. This is a
   vague rule because it should be ideally assessed with knowledge of content delivery systems 
   and compared using benchmarks.
 
-#### 13. Asynchronous CSS
+### 15. Asynchronous CSS
   Load the CSS file without blocking other assets. 
 
-#### 13. Prefix styles
+### 16. Prefix styles
   Automatically add vendor prefixes for required browsers. It is far better to do this using 
   NPM modules than CSS mixins.
   
-#### 14. Do not touch the root font-size
+### 17. Do not touch the root font-size
   Leave it alone, it's commonly 16px but not for all devices so leave it alone.
   
-#### 14. Use REM and EM units for fonts (Do not convert them)
+### 18. Use REM and EM units for fonts (Do not convert them)
   When you set font-size to let's say `24px` it is not exactly `24px` in height in all browsers.
   Because: 
     - User agent differences
     - Font sizing variates between font styles.
-  *It is not possible to correlate font-size in pixels to the actual pixel value on the screen*
-  Ems and rem units are to be used via trial and error **just like pixels**. 
+  **It is not possible to correlate font-size in pixels to the actual pixel value on the screen**
+  Ems and rem units are to be tried via trial and error **just like pixels**. 
   Serious CSS development should generally use REM and or EM units for font size, padding and margins.
 
     
