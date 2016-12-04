@@ -123,7 +123,7 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
 ### 3. Selectors are hyphenated with the exception of state.
   Hyphen separated names are arguably easier to read especially in markup
  
-### 4. JavaScript Id's and classes must start with js- `js-something`
+### 4. JavaScript hooks start with "js-" `js-something`
   How many times have you been curious if a class is being used by JavaScript?
   Now you are fully aware.
 
