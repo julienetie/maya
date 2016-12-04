@@ -5,7 +5,8 @@ An efficient an maintainable CSS Framework and Architecture.
 MaYa uses a minimalistic and opinionated CSS methodology based on real world uses and expectations.
 MaYa doesn't look for a "One size fits all" solutions, because there is none.
 
-MaYa dosen't come with fancy pre-built components, because that's your job, MaYa is for advanced
+## Who is MaYa for?
+**MaYa doesn't come with fancy pre-built components, that's your job**. MaYa is for advanced
 web design and development that considers:
 
 - A light weight footprint
@@ -15,13 +16,30 @@ web design and development that considers:
 - Documentation
 - Ease of use
 
-### Reset sheet
+## What exactly is it?
 
-A customised version of normailize.scss
+MaYa is really nothing much at all. It's just:
+- A 24 column customised Pure.CSS grid based on Foundation media queries.
+- A normalize.css reset sheet.
+- A directory structure.
+- A documentation scructure.
+- 2 separation of concerns for component
+- 2 separation of concerns for sub-classes
+- A common sense naming convention
+- A handful of best practice ̶r̶a̶n̶t̶s̶ helpers
+- Optimised implementations for performance: TBA
+- A conformity node module: TBA
 
-### Grid system
 
-A 24 column customised Pure.CSS grid based on Foundation media queries.
+## Normalize
+
+The creator and maintainers of normalize.css has done a fantastic job. Customise it or use a different reset sheet.
+
+## 24
+
+A 24 column grid allows for detailed column structures that may become more complicated to maintain by nesting.
+If you really dislike the concept of 24 units, why not jump to pure.css and customise another. MaYa recommendsd pure.css
+because of it's size and reliability but feel free to use what you like.
 
 ## Sub-class
 
@@ -33,9 +51,9 @@ There are two types of sub-class:
 A common sub-class is used to avoid duplicating by providing common elements with common styles.
 Common sub-classes reside in: `./common/*`
 
-A common sub-class should be shorthand ( Max 4 characters ) and start with a hyphen.
-`.-bttn {//...`
-
+A common sub-class should start with a hyphen.
+`pause -button`
+`play -butto`
 A variant sub-class is used to extend or override with a new variant of the class it proceeds.
 Variant sub-classes reside below the class it extends or overrides. 
 
@@ -76,7 +94,7 @@ A member is not typically:
 - A majority portion of a component.
 
 There is no specific definition of what a member can and can not be, it is purely based on discretion.
-It' usually a small part of an interface such as an input field link button or list icon.
+It' usually a small part of an interface such as an input field, link, button or maybe a list icon.
 
 Members should differentiated because they are sometimes:
 - Sometimes Heavily variant-ed
@@ -89,8 +107,34 @@ Members have some different rules:
 
 Because these are some of the most commonly used CSS resources, on a website with rapid changes 
 it is acceptable to duplicate CSS in return for ease of extending and maintainability.
+
+##### This is outrageous!!!
+Not really, this is CSS not C#. Can you subclass the hell out of a thing? Of course but:
+- For large scale projects this can become a mess to maintain.
+- If you are happy to add 4 or 5 variant sub-classes to a single element, you are creatig a monster.
+- You may save a few bytes but you will eventually duplicate even more code due to the complexity.
+- Each subclass introduces precedence, the more precedence the hard it becomes to debug.
+- Expecting people to just name lots of classes on one element better is rediculous and more of a 
+frustration of people than a flawed workflow.
+- Considering all aspects of front-end design and development, the more subcasses, the higher the cost.
+
+##### Duplication in memebers
+In computing, duplicating code is considered a sin, but let's break down the science of modern day CSS.
+Despite duplicating code or not, your medium -> large code base is guaranteed to contain a substantial 
+number of duplicate series of bytes before being compressed and served.
+
+For files below 32KB gzip will look for duplicate series of bytes and back-reference them. 
+Therefore in CSS world providing we:
+
+1. Keep our CSS files below 32KB each.
+2. Ensure we only duplicate properties in the same consecutive order as others.
+
+Duplication will not affect css download times. But it will slightly add to the browser parse time so 
+this is not a "pass" to repeat the same thing a million times.
+
+#### @extend or duplicate members
 Members can @extend or be manually duplicated depending on how agile the development of the member is expected to be.
-Duplication is applicable because members only contain small amounts of CSS.
+Duplication is applicable because members are expeced to contain small amounts of CSS.
 
 #### Do not use "common sub-classes" with members
 
@@ -124,11 +168,18 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
 - `./index.scss` Directory imports and main CSS file
 - `./README.md` Directory imports and main CSS file
 
-### 2. All directories must contain an index.scss file 
+### 2. All directories must contain an index.scss with the exception of ./components 
   The index is the main import file of a directory and the 
   main file to import modules within the directory. Therefore 
   When a file is added/ removed within a folder you should only 
   need to update the index.scss of that folder it resides in.
+  
+  Components are global and therefore they should be included in the root index.scss
+  file. This is purely for ease of use so you can see at a glance what pages you have
+  and what components are available. The same is not true for members because 
+  members are smaller types of components that are expected to be available everywhere
+  and rarely need to be compared on a page to page basis.
+  
  
 ### 3. Selectors are hyphenated with the exception of state.
   Hyphen separated names are arguably easier to read especially in markup
@@ -184,7 +235,7 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
   NPM modules than CSS mixins.
   
 ### 17. Do not touch the root font-size
-  Leave it alone, it's commonly 16px but not for all devices so leave it alone.
+  Leave it alone, it's commonly 16px but not for all devices and scenarios so leave it alone.
   
 ### 18. Use REM and EM units for fonts (Do not convert them)
   When you set font-size to let's say `24px` it is not exactly `24px` in height in all browsers.
@@ -194,6 +245,14 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
   **It is not possible to correlate font-size in pixels to the actual pixel value on the screen**
   Ems and rem units are to be tried via trial and error **just like pixels**. 
   Serious CSS development should generally use REM and or EM units for font size, padding and margins.
-
-    
-
+  
+### 19. Keep CSS files to 32KB Max
+  As mentioned gzip will compress duplicate series of bytes if the uncompressed file is 32KB or below.
+  Despite the methodolgy you develop your CSS in, you will have duplicate series of bytes.
+  
+### 20. Keep duplicate properties in order
+  When duplicating any amount of properties ensure they are in consecutive order to the original or
+  use the @extend method in Sass. This will ensure your duplicate code is back-referenced in gzip.
+  
+  
+  
