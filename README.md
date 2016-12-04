@@ -1,9 +1,19 @@
 # MaYa
+
 An efficient an maintainable CSS Framework and Architecture. 
 
-MaYA uses a minimalistic and opinionated CSS methodology based on real world uses and expectations.
+MaYa uses a minimalistic and opinionated CSS methodology based on real world uses and expectations.
 MaYa doesn't look for a "One size fits all" solutions, because there is none.
 
+MaYa dosen't come with fancy pre-built components, because that's your job, MaYa is for advanced
+web design and development that considers:
+
+- A light weight footprint
+- Performance
+- Maintainability
+- Rapid development
+- Documentation
+- Ease of use
 
 ### Reset sheet
 
