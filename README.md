@@ -2,7 +2,7 @@
 
 ## An Efficient And Highly Maintainable CSS Framework Architecture. 
 
-MaYa uses a minimalistic but righfully opinionated CSS methodology based on real world results, dissapointments and expectations. MaYa doesn't claim a "One size fits all" solution, because there is none.
+MaYa uses a minimalistic but rightfully opinionated CSS methodology based on real world results and expectations. MaYa doesn't claim a "One size fits all" solution, because there is none.
 
 ## Who is MaYa for?
 **MaYa doesn't come with fancy pre-built components, that's your job**. MaYa is for advanced web design and development that considers:
@@ -20,7 +20,7 @@ MaYa is simply:
 - A 24 column grid with [Foundation](http://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html).
 - A [normalize.css reset sheet](https://necolas.github.io/normalize.css/) like media queries.
 - A directory structure.
-- A documentation scructure.
+- A documentation structure.
 - 2 separation of concerns for components.
 - 2 separation of concerns for sub-classes.
 - A way better naming convention than that other thing.
@@ -37,7 +37,7 @@ The creator and maintainers of normalize.css have done a fantastic job. MaYa use
 ## 24
 
 A 24 column grid allows for detailed column structures that may become more complicated to maintain by nesting.
-If you really dislike the concept of 24 units, why not jump to pure.css and customise another. MaYa recommendsd pure.css
+If you really dislike the concept of 24 units, why not jump to pure.css and customise another. MaYa recommends pure.css
 because of it's size and reliability but feel free to use what you like.
 
 #### Grid naming convention
@@ -134,10 +134,10 @@ An element that needs to be accessed by JavaScript should contain either an ID o
 - `.js-user-interfaces  // Must be plural`
 
 *Style selectors and JavaScript selectors must be completely decoupled*
-JavaScript class selectors must be pluralised and only used for mulitple references.
+JavaScript class selectors must be pluralised and only used for mulitiple references.
 
 ## State
-State is a class that starts with an underscore, is fully uppercased and spaced by underscores.
+State is a class that starts with an underscore, is fully upper-cased and spaced by underscores.
 - `._LIGHTS_ON`
 - `._LIGHTS_OFF`
 - .`_SHOW_VOUCHER`
@@ -171,15 +171,15 @@ Because these are some of the most commonly used CSS resources, on a website wit
 changes it is acceptable to duplicate CSS in return for ease of extending styles and maintainability.
 
 ##### OMG This is outrageous!!!
-Not really, `class="can you subclass the hell out of any thing"` ? yes of course but:
+Not really, `class="can you sub-class the hell out of any thing"` ? yes of course but:
 - For large scale projects this commonly becomes a mess to maintain.
-- If you are happy to add 4, 5 or more variant sub-classes to a single element, you are probably creatig a monster.
-- You may save a few bytes but the likelyhood of eventually duplicate even more code due to the complexity is raised.
-- Each subclass introduces precedence, the more precedence the hard it becomes to debug.
-- Expecting people to just name lots of shared sub-classes better is more of a frustration of humans than the realisation of a flawed workflow.
+- If you are happy to add 4, 5 or more variant sub-classes to a single element, you are probably creating a monster.
+- You may save a few bytes but the likely-hood of eventually duplicate even more code due to the complexity is raised.
+- Each sub-class introduces precedence, the more precedence the hard it becomes to debug.
+- Expecting people to just name lots of shared sub-classes better is more of a frustration of humans than the realisation of a flawed work-flow.
 - Considering all aspects of front-end design and development, generally the more subcasses on one element, the higher the cost.
 
-##### Duplication in memebers
+##### Duplication in members
 In computing, duplicating code is considered a sin, but let's break down the science of modern day CSS.
 Despite duplicating code or not, your medium -> large code base is guaranteed to contain a substantial 
 number of duplicate series of bytes before being compressed and served.
@@ -195,7 +195,7 @@ this is not a "pass" to duplicate the same CSS a million times.
 
 #### @extend or duplicate members
 Members can @extend or be manually duplicated depending on how agile the development of the member is expected to be.
-Duplication is applicable because members are expeced to contain small amounts of CSS.
+Duplication is applicable because members are expected to contain small amounts of CSS.
 
 #### Do not use "common sub-classes" with members
 
@@ -217,7 +217,7 @@ To re-iterate, when necessary duplicate the smallest CSS code on the app for:
 Maya has tackled the concept of not duplicating code (Similar to OOCSS) but also decoupling code for members, which are the parts of the website that are usually prone to tight coupling.
 
 Maya does not solve decoupling for components and layout design, as the scenarios are too broad to decipher. For instance in some cases it is convenient to sub-class child components and even grandchild components, in other cases it's a terrible idea.
-But here are some mandatory principals to enforce an agile codebaase for dedicated teams or your future self.
+But here are some mandatory principals to enforce an agile code-base for dedicated teams or your future self.
 
 ### 1. Directories: 
 - `./common/*` Common sub-classes
@@ -311,7 +311,7 @@ But here are some mandatory principals to enforce an agile codebaase for dedicat
   
 ### 19. Keep CSS files to 32KB Max
   As mentioned gzip will compress duplicate series of bytes if the uncompressed file is 32KB or below.
-  Despite the methodolgy you develop your CSS in, you will have duplicate series of bytes to take advantage of.
+  Despite the methodology you develop your CSS in, you will have duplicate series of bytes to take advantage of.
   
 ### 20. Keep duplicate properties in order
   When duplicating any amount of properties ensure they are in consecutive order to the original or
