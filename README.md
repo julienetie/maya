@@ -17,7 +17,7 @@ MaYa uses a minimalistic but rightfully opinionated CSS methodology based on rea
 ## What exactly is MaYA?
 
 MaYa is simply:
-- A 24 column grid with [Foundation](http://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html).
+- A 24 column grid with up to date media queries.
 - A [normalize.css reset sheet](https://necolas.github.io/normalize.css/) like media queries.
 - A directory structure.
 - A documentation structure.
